@@ -122,8 +122,8 @@ namespace BNS_DPSmetr
             if (bit64) bits = "64";
 
             string directory = folder_path + "xml" + bits + @".dat.files\client.config2.xml";
-            string word = "<option name=\"show-party-6-dungeon-and-cave\" value=\"n\"/>";
-            string replacement = "<option name=\"show-party-6-dungeon-and-cave\" value=\"y\"/>";
+            string word = "option name=\"show-party-6-dungeon-and-cave\" value=\"n\"";
+            string replacement = "option name=\"show-party-6-dungeon-and-cave\" value=\"y\"";
 
             StreamReader reader = new StreamReader(directory);
             string input = reader.ReadToEnd();
@@ -133,28 +133,28 @@ namespace BNS_DPSmetr
             {
                 string output = input.Replace(word, replacement);
 
-                word = "<option name=\"show-public-zone\" value=\"n\"/>";
-                replacement = "<option name=\"show-public-zone\" value=\"y\"/>";
+                word = "option name=\"show-public-zone\" value=\"n\"";
+                replacement = "option name=\"show-public-zone\" value=\"y\"";
                 output = output.Replace(word, replacement);
 
-                word = "<option name=\"show-field-zone\" value=\"n\"/>";
-                replacement = "<option name=\"show-field-zone\" value=\"y\"/>";
+                word = "option name=\"show-field-zone\" value=\"n\"";
+                replacement = "option name=\"show-field-zone\" value=\"y\"";
                 output = output.Replace(word, replacement);
 
-                word = "<option name=\"show-classic-field-zone\" value=\"n\"/>";
-                replacement = "<option name=\"show-classic-field-zone\" value=\"y\"/>";
+                word = "option name=\"show-classic-field-zone\" value=\"n\"";
+                replacement = "option name=\"show-classic-field-zone\" value=\"y\"";
                 output = output.Replace(word, replacement);
 
-                word = "<option name=\"show-faction-battle-field-zone\" value=\"n\"/>";
-                replacement = "<option name=\"show-faction-battle-field-zone\" value=\"y\"/>";
+                word = "option name=\"show-faction-battle-field-zone\" value=\"n\"";
+                replacement = "option name=\"show-faction-battle-field-zone\" value=\"y\"";
                 output = output.Replace(word, replacement);
 
-                word = "<option name=\"show-jackpot-boss-zone\" value=\"n\"/>";
-                replacement = "<option name=\"show-jackpot-boss-zone\" value=\"y\"/>";
+                word = "option name=\"show-jackpot-boss-zone\" value=\"n\"";
+                replacement = "option name=\"show-jackpot-boss-zone\" value=\"y\"";
                 output = output.Replace(word, replacement);
 
                 writer.Write(output);
-
+                
                 writer.Close();
             }
 
