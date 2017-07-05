@@ -20,6 +20,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Threading;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace BNS_DPSmetr
 {
@@ -33,8 +34,7 @@ namespace BNS_DPSmetr
         public MainWindow()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
-            {
-                // Note: Requires a using statement for System.Reflection and System.Diagnostics.
+            {                
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 List<string> embeddedResources = new List<string>(assembly.GetManifestResourceNames());
                 string assemblyName = new AssemblyName(args.Name).Name;
@@ -64,6 +64,51 @@ namespace BNS_DPSmetr
             SearchGame();
 
             radio_32b.IsChecked = true;
+
+            Start();
+        }
+
+        private void Start()
+        {
+            Thread st = new Thread(timer);
+            st.IsBackground = true;
+            st.Start();
+        }
+                
+        private void client_search()
+        {
+            bool _is = false;
+            Process[] procs = Process.GetProcessesByName("client");
+            foreach (Process pr in procs)
+            {
+                _is = true;
+                button.IsEnabled = false;
+                textBlock.Text = "Закройте игру";
+                textBlock.Visibility = Visibility.Visible;                
+            }
+
+            if (!_is)
+            {
+                button.IsEnabled = true;
+                textBlock.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void timer()
+        {
+            DateTime dt = new DateTime();
+            while (true)
+            {
+                Dispatcher.Invoke(() => { client_search(); });
+
+                dt = DateTime.Now;
+                while ((DateTime.Now - dt).TotalMilliseconds < 1000)
+                {
+                    Thread.Sleep(250);
+                }
+
+                if (patching) break;
+            }
         }
 
         static RegistryKey key_soft = Registry.LocalMachine.OpenSubKey("SOFTWARE");
@@ -187,10 +232,14 @@ namespace BNS_DPSmetr
             _exit();
         }
 
+        private bool patching = false;
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             if (verifyFolder())
             {
+                patching = true;
+
                 game_path = textBox.Text;
                 textBlock.Text = "Extracting...";
                 textBlock.Visibility = Visibility.Visible;
