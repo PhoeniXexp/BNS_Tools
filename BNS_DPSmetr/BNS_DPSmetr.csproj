@@ -105,5 +105,8 @@
   <ItemGroup>
     <None Include="Puzzles.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Ionic.ZLib.dll" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
