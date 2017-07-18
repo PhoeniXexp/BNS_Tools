@@ -114,9 +114,10 @@ namespace BNS_DPSmetr
         static RegistryKey key_soft = Registry.LocalMachine.OpenSubKey("SOFTWARE");
         RegistryKey key_game;
 
-        string game_path = "";
-        string folder_path = "";
-        bool bit64 = false;
+        private string game_path = "";
+        private string folder_path = "";
+        private bool bit64 = false;
+        private bool xml_plus = false;
 
         private CultureInfo originalCulture;
 
@@ -180,19 +181,17 @@ namespace BNS_DPSmetr
             {
                 BNSDat.BNSDat BnsDat = new BNSDat.BNSDat();
                 BnsDat.Extract(filepath, bit64);
-            }
+            }            
         }
 
         private void DPSturnOn()
         {
             Extractor();
-
+            
             string bits = "";
             if (bit64) bits = "64";
 
             string directory = folder_path + "xml" + bits + @".dat.files\client.config2.xml";
-            string word = "option name=\"show-party-6-dungeon-and-cave\" value=\"n\"";
-            string replacement = "option name=\"show-party-6-dungeon-and-cave\" value=\"y\"";
 
             StreamReader reader = new StreamReader(directory);
             string input = reader.ReadToEnd();
@@ -200,36 +199,118 @@ namespace BNS_DPSmetr
 
             using (StreamWriter writer = new StreamWriter(directory))
             {
-                string output = input.Replace(word, replacement);
+                string output = edit_xml(input);
 
-                word = "option name=\"show-public-zone\" value=\"n\"";
-                replacement = "option name=\"show-public-zone\" value=\"y\"";
-                output = output.Replace(word, replacement);
-
-                word = "option name=\"show-field-zone\" value=\"n\"";
-                replacement = "option name=\"show-field-zone\" value=\"y\"";
-                output = output.Replace(word, replacement);
-
-                word = "option name=\"show-classic-field-zone\" value=\"n\"";
-                replacement = "option name=\"show-classic-field-zone\" value=\"y\"";
-                output = output.Replace(word, replacement);
-
-                word = "option name=\"show-faction-battle-field-zone\" value=\"n\"";
-                replacement = "option name=\"show-faction-battle-field-zone\" value=\"y\"";
-                output = output.Replace(word, replacement);
-
-                word = "option name=\"show-jackpot-boss-zone\" value=\"n\"";
-                replacement = "option name=\"show-jackpot-boss-zone\" value=\"y\"";
-                output = output.Replace(word, replacement);
-
+                if (xml_plus)
+                {
+                    output = edit_xml_plus(output);
+                }
+                
                 writer.Write(output);
                 
                 writer.Close();
             }
-
+            
             Compiler();
-
+            
             _exit();
+        }
+
+        private string edit_xml(string input)
+        {
+            string word = "option name=\"show-party-6-dungeon-and-cave\" value=\"n\"";
+            string replacement = "option name=\"show-party-6-dungeon-and-cave\" value=\"y\"";
+
+            string output= input.Replace(word, replacement);
+
+            word = "option name=\"show-public-zone\" value=\"n\"";
+            replacement = "option name=\"show-public-zone\" value=\"y\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"show-field-zone\" value=\"n\"";
+            replacement = "option name=\"show-field-zone\" value=\"y\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"show-classic-field-zone\" value=\"n\"";
+            replacement = "option name=\"show-classic-field-zone\" value=\"y\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"show-faction-battle-field-zone\" value=\"n\"";
+            replacement = "option name=\"show-faction-battle-field-zone\" value=\"y\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"show-jackpot-boss-zone\" value=\"n\"";
+            replacement = "option name=\"show-jackpot-boss-zone\" value=\"y\"";
+            output = output.Replace(word, replacement);
+
+            return output;
+        }
+
+        private string edit_xml_plus(string input)
+        {
+            string word = "option name=\"pending - time\" value=\"0.300000\"";
+            string replacement = "option name=\"pending - time\" value=\"0.010000\"";
+
+            string output = input.Replace(word, replacement);
+
+            word = "option name=\"pending - key - tick - time\" value=\"0.25\"";
+            replacement = "option name=\"pending - key - tick - time\" value=\"0.10\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"pressed - key - tick - time\" value=\"0.25\"";
+            replacement = "option name=\"pressed - key - tick - time\" value=\"0.10\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"ignore - mouse - press - time\" value=\"1.000000\"";
+            replacement = "option name=\"ignore - mouse - press - time\" value=\"0.010000\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"distance2\" value=\"40.000000\"";            
+            replacement = "option name=\"distance2\" value=\"320.000000\"";
+            output = output.Replace(word, replacement);
+            //али кота?
+
+            word = "option name=\"other - hide - show - 1\" value=\"00007916.hide_enemy5\"";
+            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"other - hide - show - 2\" value=\"00007916.hide_enemy4\"";
+            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"other - hide - show - 3\" value=\"00007916.hide_enemy3\"";
+            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"other - hide - show - 4\" value=\"00007916.hide_enemy2\"";
+            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"other - hide - show - 5\" value=\"00007916.hide_enemy1\"";
+            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            output = output.Replace(word, replacement);
+            //инвизы
+            
+            word = "option name=\"hidden - pc - name - rating\" value=\"160000\"";
+            replacement = "option name=\"hidden - pc - name - rating\" value=\"120000\"";
+            output = output.Replace(word, replacement);
+            //скрытие имени арены серебро
+                        
+            word = "option name=\"lobby - gamemode - change - interval\" value=\"3\"";
+            replacement = "option name=\"lobby - gamemode - change - interval\" value=\"1\"";
+            output = output.Replace(word, replacement);
+
+            word = "option name=\"lobby-arena-match-restart-interval\" value=\"3\"";
+            replacement = "option name=\"lobby-arena-match-restart-interval\" value=\"1\"";
+            output = output.Replace(word, replacement);
+            //кд реса на арене
+
+            word = "option name=\"lobby-arena-match-reready-interval\" value=\"3\"";
+            replacement = "option name=\"lobby-arena-match-reready-interval - interval\" value=\"1\"";
+            output = output.Replace(word, replacement);
+            //кд реса на арене
+
+            return output;
         }
 
         private bool patching = false;
@@ -247,6 +328,7 @@ namespace BNS_DPSmetr
                 radio_32b.IsEnabled = false;
                 radio_64b.IsEnabled = false;
                 button_folder.IsEnabled = false;
+                checkbox_xml_plus.IsEnabled = false;
                 Thread t = new Thread(DPSturnOn);
                 t.IsBackground = true;
                 t.Start();                
@@ -259,6 +341,7 @@ namespace BNS_DPSmetr
                 radio_32b.IsEnabled = true;
                 radio_64b.IsEnabled = true;
                 button_folder.IsEnabled = true;
+                checkbox_xml_plus.IsEnabled = true;
             }            
         }
 
@@ -304,6 +387,15 @@ namespace BNS_DPSmetr
             Dispatcher.Invoke(() => { this.Close(); });
         }
 
+        private void checkbox_xml_plus_Checked(object sender, RoutedEventArgs e)
+        {
+            xml_plus = true;
+        }
+
+        private void checkbox_xml_plus_Unchecked(object sender, RoutedEventArgs e)
+        {
+            xml_plus = false;
+        }
     }
 }
 
