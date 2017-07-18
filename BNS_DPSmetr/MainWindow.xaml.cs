@@ -248,21 +248,21 @@ namespace BNS_DPSmetr
 
         private string edit_xml_plus(string input)
         {
-            string word = "option name=\"pending - time\" value=\"0.300000\"";
-            string replacement = "option name=\"pending - time\" value=\"0.010000\"";
+            string word = "option name=\"pending-time\" value=\"0.300000\"";
+            string replacement = "option name=\"pending-time\" value=\"0.010000\"";
 
             string output = input.Replace(word, replacement);
 
-            word = "option name=\"pending - key - tick - time\" value=\"0.25\"";
-            replacement = "option name=\"pending - key - tick - time\" value=\"0.10\"";
+            word = "option name=\"pending-key-tick-time\" value=\"0.25\"";
+            replacement = "option name=\"pending-key-tick-time\" value=\"0.10\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"pressed - key - tick - time\" value=\"0.25\"";
-            replacement = "option name=\"pressed - key - tick - time\" value=\"0.10\"";
+            word = "option name=\"pressed-key-tick-time\" value=\"0.25\"";
+            replacement = "option name=\"pressed-key-tick-time\" value=\"0.10\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"ignore - mouse - press - time\" value=\"1.000000\"";
-            replacement = "option name=\"ignore - mouse - press - time\" value=\"0.010000\"";
+            word = "option name=\"ignore-mouse-press-time\" value=\"1.000000\"";
+            replacement = "option name=\"ignore-mouse-press-time\" value=\"0.010000\"";
             output = output.Replace(word, replacement);
 
             word = "option name=\"distance2\" value=\"40.000000\"";            
@@ -270,34 +270,34 @@ namespace BNS_DPSmetr
             output = output.Replace(word, replacement);
             //али кота?
 
-            word = "option name=\"other - hide - show - 1\" value=\"00007916.hide_enemy5\"";
-            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            word = "option name=\"other-hide-show-1\" value=\"00007916.hide_enemy5\"";
+            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"other - hide - show - 2\" value=\"00007916.hide_enemy4\"";
-            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            word = "option name=\"other-hide-show-2\" value=\"00007916.hide_enemy4\"";
+            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"other - hide - show - 3\" value=\"00007916.hide_enemy3\"";
-            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            word = "option name=\"other-hide-show-3\" value=\"00007916.hide_enemy3\"";
+            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"other - hide - show - 4\" value=\"00007916.hide_enemy2\"";
-            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            word = "option name=\"other-hide-show-4\" value=\"00007916.hide_enemy2\"";
+            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"other - hide - show - 5\" value=\"00007916.hide_enemy1\"";
-            replacement = "option name=\"other - hide - show - 1\" value=\"00007916.hide\"";
+            word = "option name=\"other-hide-show-5\" value=\"00007916.hide_enemy1\"";
+            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
             //инвизы
-            
-            word = "option name=\"hidden - pc - name - rating\" value=\"160000\"";
-            replacement = "option name=\"hidden - pc - name - rating\" value=\"120000\"";
+
+            word = "option name=\"hidden-pc-name-rating\" value=\"160000\"";
+            replacement = "option name=\"hidden-pc-name-rating\" value=\"120000\"";
             output = output.Replace(word, replacement);
             //скрытие имени арены серебро
-                        
-            word = "option name=\"lobby - gamemode - change - interval\" value=\"3\"";
-            replacement = "option name=\"lobby - gamemode - change - interval\" value=\"1\"";
+
+            word = "option name=\"lobby-gamemode-change-interval\" value=\"3\"";
+            replacement = "option name=\"lobby-gamemode-change-interval\" value=\"1\"";
             output = output.Replace(word, replacement);
 
             word = "option name=\"lobby-arena-match-restart-interval\" value=\"3\"";
@@ -327,7 +327,7 @@ namespace BNS_DPSmetr
                 button.IsEnabled = false;
                 radio_32b.IsEnabled = false;
                 radio_64b.IsEnabled = false;
-                button_folder.IsEnabled = false;
+                button_folder.IsEnabled = false;                
                 checkbox_xml_plus.IsEnabled = false;
                 Thread t = new Thread(DPSturnOn);
                 t.IsBackground = true;
