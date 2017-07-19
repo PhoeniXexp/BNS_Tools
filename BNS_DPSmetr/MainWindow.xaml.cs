@@ -275,19 +275,19 @@ namespace BNS_DPSmetr
             output = output.Replace(word, replacement);
 
             word = "option name=\"other-hide-show-2\" value=\"00007916.hide_enemy4\"";
-            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
+            replacement = "option name=\"other-hide-show-2\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
             word = "option name=\"other-hide-show-3\" value=\"00007916.hide_enemy3\"";
-            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
+            replacement = "option name=\"other-hide-show-3\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
             word = "option name=\"other-hide-show-4\" value=\"00007916.hide_enemy2\"";
-            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
+            replacement = "option name=\"other-hide-show-4\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
 
             word = "option name=\"other-hide-show-5\" value=\"00007916.hide_enemy1\"";
-            replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
+            replacement = "option name=\"other-hide-show-5\" value=\"00007916.hide\"";
             output = output.Replace(word, replacement);
             //инвизы
 
@@ -306,7 +306,7 @@ namespace BNS_DPSmetr
             //кд реса на арене
 
             word = "option name=\"lobby-arena-match-reready-interval\" value=\"3\"";
-            replacement = "option name=\"lobby-arena-match-reready-interval - interval\" value=\"1\"";
+            replacement = "option name=\"lobby-arena-match-reready-interval\" value=\"1\"";
             output = output.Replace(word, replacement);
             //кд реса на арене
 
