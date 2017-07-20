@@ -265,10 +265,12 @@ namespace BNS_DPSmetr
             replacement = "option name=\"ignore-mouse-press-time\" value=\"0.010000\"";
             output = output.Replace(word, replacement);
 
+            /*
             word = "option name=\"distance2\" value=\"40.000000\"";            
             replacement = "option name=\"distance2\" value=\"320.000000\"";
             output = output.Replace(word, replacement);
             //али кота?
+            */
 
             word = "option name=\"other-hide-show-1\" value=\"00007916.hide_enemy5\"";
             replacement = "option name=\"other-hide-show-1\" value=\"00007916.hide\"";
