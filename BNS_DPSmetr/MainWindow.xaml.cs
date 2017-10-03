@@ -145,7 +145,7 @@ namespace BNS_DPSmetr
             }
             catch
             {
-                game_path = @"C:/Games/Blade and Soul/";
+                game_path = @"C:\Games\Blade and Soul\";
             }
 
             textBox.Text = game_path;
