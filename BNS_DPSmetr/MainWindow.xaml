@@ -14,6 +14,6 @@
         <TextBlock x:Name="textBlock" Height="20" Margin="155,62,0,0" TextWrapping="Wrap" Text="Sample text ..." VerticalAlignment="Top" HorizontalAlignment="Left" Width="85" Foreground="#FF004000" FontWeight="Bold" TextAlignment="Center"/>
         <RadioButton x:Name="radio_32b" Content="32Bit Client" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Checked="radio_32b_Checked"/>
         <RadioButton x:Name="radio_64b" Content="64Bit Client" HorizontalAlignment="Left" Margin="110,100,0,0" VerticalAlignment="Top" Checked="radio_64b_Checked"/>
-        <CheckBox x:Name="checkbox_xml_plus" Content="Cheats" HorizontalAlignment="Left" Margin="210,100,0,0" VerticalAlignment="Top" Checked="checkbox_xml_plus_Checked" Unchecked="checkbox_xml_plus_Unchecked"/>
+        <CheckBox x:Name="checkbox_xml_plus" Content="Cheats" HorizontalAlignment="Left" Margin="210,100,0,0" VerticalAlignment="Top" Checked="checkbox_xml_plus_Checked" Unchecked="checkbox_xml_plus_Unchecked" IsEnabled="False" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -205,9 +205,9 @@ namespace BNS_DPSmetr
                 {
                     output = edit_xml_plus(output);
                 }
-                
+
                 writer.Write(output);
-                
+
                 writer.Close();
             }
             
