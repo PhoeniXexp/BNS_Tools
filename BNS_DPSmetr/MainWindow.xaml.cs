@@ -148,7 +148,7 @@ namespace BNS_DPSmetr
                 game_path = @"C:\Games\Blade and Soul\";
             }
 
-            textBox.Text = game_path;
+            textBox.Text = game_path.Replace(@"/", @"\");
         }
         
         public void Compiler()
