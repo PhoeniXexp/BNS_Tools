@@ -78,13 +78,20 @@ namespace BNS_DPSmetr
         private void client_search()
         {
             bool _is = false;
+
+            string path = game_path.Replace(@"/", @"\") + @"\bin\Frost\bns_platform_x";
+            bool frost64 = File.Exists(path + "64"); 
+
             Process[] procs = Process.GetProcessesByName("client");
             foreach (Process pr in procs)
             {
-                _is = true;
-                button.IsEnabled = false;
-                textBlock.Text = "Закройте игру";
-                textBlock.Visibility = Visibility.Visible;                
+                if (bit64 == frost64)
+                {
+                    _is = true;
+                    button.IsEnabled = false;
+                    textBlock.Text = "Закройте игру";
+                    textBlock.Visibility = Visibility.Visible;
+                }
             }
 
             if (!_is)
@@ -102,7 +109,7 @@ namespace BNS_DPSmetr
                 Dispatcher.Invoke(() => { client_search(); });
 
                 dt = DateTime.Now;
-                while ((DateTime.Now - dt).TotalMilliseconds < 1000)
+                while ((DateTime.Now - dt).TotalMilliseconds < 666)
                 {
                     Thread.Sleep(250);
                 }
