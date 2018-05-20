@@ -405,6 +405,38 @@ namespace BNS_DPSmetr
         {
             xml_plus = false;
         }
+
+        private void texture_off_Click(object sender, RoutedEventArgs e)
+        {
+            /*
+            cd "contents\bns\CookedPC"
+ren 00007917.upk 00007917.bak 
+echo kot
+::ren 00007916.upk 00007916.bak
+echo sin
+ren 00007915.upk 00007915.bak
+echo gun
+ren 00007914.upk 00007914.bak
+echo des
+ren 00007913.upk 00007913.bak
+echo fm
+ren 00007912.upk 00007912.bak
+echo kfm
+ren 00007911.upk 00007911.bak
+echo bm
+ren 00018601.upk 00018601.bak
+echo lsm
+ren 00023439.upk 00023439.bak
+echo wl
+ren 00034408.upk 00034408.bak
+echo sf
+    */
+        }
+
+        private void texture_on_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
 
