@@ -225,29 +225,29 @@ namespace BNS_DPSmetr
 
         private string edit_xml(string input)
         {
-            string word = "option name=\"show-party-6-dungeon-and-cave\" value=\"n\"";
-            string replacement = "option name=\"show-party-6-dungeon-and-cave\" value=\"y\"";
+            string word = "option name=\"showtype-party-6-dungeon-and-cave\" value=\"1\"";
+            string replacement = "option name=\"showtype-party-6-dungeon-and-cave\" value=\"2\"";
 
             string output= input.Replace(word, replacement);
 
-            word = "option name=\"show-public-zone\" value=\"n\"";
-            replacement = "option name=\"show-public-zone\" value=\"y\"";
+            word = "option name=\"showtype-public-zone\" value=\"0\"";
+            replacement = "option name=\"showtype-public-zone\" value=\"2\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"show-field-zone\" value=\"n\"";
-            replacement = "option name=\"show-field-zone\" value=\"y\"";
+            word = "option name=\"showtype-field-zone\" value=\"0\"";
+            replacement = "option name=\"showtype-field-zone\" value=\"2\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"show-classic-field-zone\" value=\"n\"";
-            replacement = "option name=\"show-classic-field-zone\" value=\"y\"";
+            word = "option name=\"showtype-classic-field-zone\" value=\"0\"";
+            replacement = "option name=\"showtype-classic-field-zone\" value=\"2\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"show-faction-battle-field-zone\" value=\"n\"";
-            replacement = "option name=\"show-faction-battle-field-zone\" value=\"y\"";
+            word = "option name=\"showtype-faction-battle-field-zone\" value=\"0\"";
+            replacement = "option name=\"showtype-faction-battle-field-zone\" value=\"2\"";
             output = output.Replace(word, replacement);
 
-            word = "option name=\"show-jackpot-boss-zone\" value=\"n\"";
-            replacement = "option name=\"show-jackpot-boss-zone\" value=\"y\"";
+            word = "option name=\"showtype-jackpot-boss-zone\" value=\"0\"";
+            replacement = "option name=\"showtype-jackpot-boss-zone\" value=\"2\"";
             output = output.Replace(word, replacement);
 
             return output;
