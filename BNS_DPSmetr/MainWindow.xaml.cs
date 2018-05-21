@@ -408,34 +408,118 @@ namespace BNS_DPSmetr
 
         private void texture_off_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            cd "contents\bns\CookedPC"
-ren 00007917.upk 00007917.bak 
-echo kot
-::ren 00007916.upk 00007916.bak
-echo sin
-ren 00007915.upk 00007915.bak
-echo gun
-ren 00007914.upk 00007914.bak
-echo des
-ren 00007913.upk 00007913.bak
-echo fm
-ren 00007912.upk 00007912.bak
-echo kfm
-ren 00007911.upk 00007911.bak
-echo bm
-ren 00018601.upk 00018601.bak
-echo lsm
-ren 00023439.upk 00023439.bak
-echo wl
-ren 00034408.upk 00034408.bak
-echo sf
-    */
+            string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
+            progressbar.Value = progressbar.Minimum;
+
+            if ((bool)chbox_kot.IsChecked)
+                if (File.Exists(folder + "00007917.upk"))
+                {
+                    File.Copy(folder + "00007917.upk", folder + "00007917.bak", true);
+                    File.Delete(folder + "00007917.upk");
+                }
+
+            if ((bool)chbox_sin.IsChecked)
+                if (File.Exists(folder + "00007916.upk"))
+                {
+                    File.Copy(folder + "00007916.upk", folder + "00007916.bak", true);
+                    File.Delete(folder + "00007916.upk");
+                }
+
+            if ((bool)chbox_gun.IsChecked)
+                if (File.Exists(folder + "00007915.upk"))
+                {
+                    File.Copy(folder + "00007915.upk", folder + "00007915.bak", true);
+                    File.Delete(folder + "00007915.upk");
+                }
+
+            if ((bool)chbox_des.IsChecked)
+                if (File.Exists(folder + "00007914.upk"))
+                {
+                    File.Copy(folder + "00007914.upk", folder + "00007914.bak", true);
+                    File.Delete(folder + "00007914.upk");
+                }
+
+            if ((bool)chbox_fm.IsChecked)
+                if (File.Exists(folder + "00007913.upk"))
+                {
+                    File.Copy(folder + "00007913.upk", folder + "00007913.bak", true);
+                    File.Delete(folder + "00007913.upk");
+                }
+
+            if ((bool)chbox_kfm.IsChecked)
+                if (File.Exists(folder + "00007912.upk"))
+                {
+                    File.Copy(folder + "00007912.upk", folder + "00007912.bak", true);
+                    File.Delete(folder + "00007912.upk");
+                }
+
+            if ((bool)chbox_bm.IsChecked)
+                if (File.Exists(folder + "00007911.upk"))
+                {
+                    File.Copy(folder + "00007911.upk", folder + "00007911.bak", true);
+                    File.Delete(folder + "00007911.upk");
+                }
+
+            if ((bool)chbox_lsm.IsChecked)
+                if (File.Exists(folder + "00018601.upk"))
+                {
+                    File.Copy(folder + "00018601.upk", folder + "00018601.bak", true);
+                    File.Delete(folder + "00018601.upk");
+                }
+
+            if ((bool)chbox_wl.IsChecked)
+                if (File.Exists(folder + "00023439.upk"))
+                {
+                    File.Copy(folder + "00023439.upk", folder + "00023439.bak", true);
+                    File.Delete(folder + "00023439.upk");
+                }
+
+            if ((bool)chbox_sf.IsChecked)
+                if (File.Exists(folder + "00034408.upk"))
+                {
+                    File.Copy(folder + "00034408.upk", folder + "00034408.bak", true);
+                    File.Delete(folder + "00034408.upk");
+                }
+
+            progressbar.Value = progressbar.Maximum;
         }
 
         private void texture_on_Click(object sender, RoutedEventArgs e)
         {
+            string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
+            progressbar.Value = progressbar.Minimum;
 
+            if (File.Exists(folder + "00007917.bak"))
+                File.Copy(folder + "00007917.bak", folder + "00007917.upk", true);
+
+            if (File.Exists(folder + "00007916.bak"))
+                File.Copy(folder + "00007916.bak", folder + "00007916.upk", true);
+
+            if (File.Exists(folder + "00007915.bak"))
+                File.Copy(folder + "00007915.bak", folder + "00007915.upk", true);
+
+            if (File.Exists(folder + "00007914.bak"))
+                File.Copy(folder + "00007914.bak", folder + "00007914.upk", true);
+
+            if (File.Exists(folder + "00007913.bak"))
+                File.Copy(folder + "00007913.bak", folder + "00007913.upk", true);
+
+            if (File.Exists(folder + "00007912.bak"))
+                File.Copy(folder + "00007912.bak", folder + "00007912.upk", true);
+
+            if (File.Exists(folder + "00007911.bak"))
+                File.Copy(folder + "00007911.bak", folder + "00007911.upk", true);
+
+            if (File.Exists(folder + "00018601.bak"))
+                File.Copy(folder + "00018601.bak", folder + "00018601.upk", true);
+
+            if (File.Exists(folder + "00023439.bak"))
+                File.Copy(folder + "00023439.bak", folder + "00023439.upk", true);
+
+            if (File.Exists(folder + "00034408.bak"))
+                File.Copy(folder + "00034408.bak", folder + "00034408.upk", true);
+
+            progressbar.Value = progressbar.Maximum;
         }
     }
 }

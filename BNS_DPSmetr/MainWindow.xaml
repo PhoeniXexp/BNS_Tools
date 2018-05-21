@@ -5,27 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BNS_DPSmetr"
         mc:Ignorable="d"
-       Title="DPS-метр by PhoeniX" Height="260" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+       Title="BNS tools by PhoeniX" Height="270" Width="315" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBox x:Name="textBox" Margin="10,10,0,0" TextWrapping="Wrap" Text="Game address" HorizontalAlignment="Left" Width="240" Height="25" VerticalAlignment="Top"/>
-        <Button x:Name="button_folder" Content="..." Margin="260,10,0,0" HorizontalAlignment="Left" Width="20" Height="25" VerticalAlignment="Top" Click="button_folder_Click"/>
+        <TextBox x:Name="textBox" Margin="10,10,0,0" TextWrapping="Wrap" Text="Game address" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top"/>
+        <Button x:Name="button_folder" Content="..." Margin="275,10,0,0" HorizontalAlignment="Left" Width="20" Height="25" VerticalAlignment="Top" Click="button_folder_Click"/>
         <Button x:Name="button" Content="Включить DPS" Margin="10,45,0,0" HorizontalAlignment="Left" Width="95" Height="25" VerticalAlignment="Top" Click="button_Click"/>
-        <ProgressBar x:Name="progressbar" Margin="115,52.5,0,0" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="165"/>
+        <ProgressBar x:Name="progressbar" Margin="115,52.5,0,0" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
         <TextBlock x:Name="textBlock" Height="20" Margin="155,62,0,0" TextWrapping="Wrap" Text="Sample text ..." VerticalAlignment="Top" HorizontalAlignment="Left" Width="85" Foreground="#FF004000" FontWeight="Bold" TextAlignment="Center"/>
         <RadioButton x:Name="radio_32b" Content="32Bit Client" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Checked="radio_32b_Checked"/>
         <RadioButton x:Name="radio_64b" Content="64Bit Client" HorizontalAlignment="Left" Margin="110,100,0,0" VerticalAlignment="Top" Checked="radio_64b_Checked"/>
         <CheckBox x:Name="checkbox_xml_plus" Content="Cheats" HorizontalAlignment="Left" Margin="210,100,0,0" VerticalAlignment="Top" Checked="checkbox_xml_plus_Checked" Unchecked="checkbox_xml_plus_Unchecked" IsEnabled="False" Visibility="Hidden"/>
-        <CheckBox x:Name="chbox_fm" Content="FM" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_wl" Content="WL" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_sf" Content="SF" HorizontalAlignment="Left" Margin="64,135,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_des" Content="DES" HorizontalAlignment="Left" Margin="64,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_sin" Content="SIN" HorizontalAlignment="Left" Margin="125,135,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_bm" Content="BM" HorizontalAlignment="Left" Margin="125,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_gun" Content="GUN" HorizontalAlignment="Left" Margin="182,135,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_kfm" Content="KFM" HorizontalAlignment="Left" Margin="182,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_kot" Content="KOT" HorizontalAlignment="Left" Margin="240,135,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="chbox_lsm" Content="LSM" HorizontalAlignment="Left" Margin="240,155,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <Button x:Name="texture_off" Content="Отключить анимацию" HorizontalAlignment="Left" Margin="18,191,0,0" VerticalAlignment="Top" Width="146" Click="texture_off_Click"/>
-        <Button x:Name="texture_on" Content="Восстановить" HorizontalAlignment="Left" Margin="182,191,0,0" VerticalAlignment="Top" Width="98" Click="texture_on_Click"/>
+        <GroupBox Header="" HorizontalAlignment="Left" Height="116" Margin="10,116,0,0" VerticalAlignment="Top" Width="289"/>
+        <CheckBox x:Name="chbox_fm" Content="FM" HorizontalAlignment="Left" Margin="30,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_wl" Content="WL" HorizontalAlignment="Left" Margin="30,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_sf" Content="SF" HorizontalAlignment="Left" Margin="86,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_des" Content="DES" HorizontalAlignment="Left" Margin="86,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_sin" Content="SIN" HorizontalAlignment="Left" Margin="140,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_bm" Content="BM" HorizontalAlignment="Left" Margin="140,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_gun" Content="GUN" HorizontalAlignment="Left" Margin="191,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_kfm" Content="KFM" HorizontalAlignment="Left" Margin="191,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_kot" Content="KOT" HorizontalAlignment="Left" Margin="249,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="chbox_lsm" Content="LSM" HorizontalAlignment="Left" Margin="249,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button x:Name="texture_off" Content="Отключить анимацию" HorizontalAlignment="Left" Margin="21,203,0,0" VerticalAlignment="Top" Width="146" Click="texture_off_Click"/>
+        <Button x:Name="texture_on" Content="Восстановить" HorizontalAlignment="Left" Margin="191,203,0,0" VerticalAlignment="Top" Width="98" Click="texture_on_Click"/>
     </Grid>
 </Window>
