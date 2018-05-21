@@ -219,8 +219,13 @@ namespace BNS_DPSmetr
             }
             
             Compiler();
-            
-            _exit();
+
+            //_exit();
+            Dispatcher.Invoke(() =>
+            {
+                texture_on.IsEnabled = true;
+                texture_off.IsEnabled = true;
+            });
         }
 
         private string edit_xml(string input)
@@ -329,6 +334,9 @@ namespace BNS_DPSmetr
             if (verifyFolder())
             {
                 patching = true;
+
+                texture_off.IsEnabled = false;
+                texture_on.IsEnabled = false;
 
                 game_path = textBox.Text;
                 textBlock.Text = "Extracting...";
