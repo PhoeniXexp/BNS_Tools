@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BNS_DPSmetr"
         mc:Ignorable="d"
-       Title="BNS tools by PhoeniX" Height="270" Width="315" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+       Title="BNS-Tools by PhoeniX" Height="270" Width="315" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <TextBox x:Name="textBox" Margin="10,10,0,0" TextWrapping="Wrap" Text="Game address" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top"/>
         <Button x:Name="button_folder" Content="..." Margin="275,10,0,0" HorizontalAlignment="Left" Width="20" Height="25" VerticalAlignment="Top" Click="button_folder_Click"/>
