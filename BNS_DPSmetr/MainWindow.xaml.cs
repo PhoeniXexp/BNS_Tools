@@ -497,35 +497,75 @@ namespace BNS_DPSmetr
             string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
             progressbar.Value = progressbar.Minimum;
 
-            if (File.Exists(folder + "00007917.bak"))
-                File.Copy(folder + "00007917.bak", folder + "00007917.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007917.bak"))
+                    File.Copy(folder + "00007917.bak", folder + "00007917.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007916.bak"))
-                File.Copy(folder + "00007916.bak", folder + "00007916.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007916.bak"))
+                    File.Copy(folder + "00007916.bak", folder + "00007916.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007915.bak"))
-                File.Copy(folder + "00007915.bak", folder + "00007915.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007915.bak"))
+                    File.Copy(folder + "00007915.bak", folder + "00007915.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007914.bak"))
-                File.Copy(folder + "00007914.bak", folder + "00007914.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007914.bak"))
+                    File.Copy(folder + "00007914.bak", folder + "00007914.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007913.bak"))
-                File.Copy(folder + "00007913.bak", folder + "00007913.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007913.bak"))
+                    File.Copy(folder + "00007913.bak", folder + "00007913.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007912.bak"))
-                File.Copy(folder + "00007912.bak", folder + "00007912.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007912.bak"))
+                    File.Copy(folder + "00007912.bak", folder + "00007912.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00007911.bak"))
-                File.Copy(folder + "00007911.bak", folder + "00007911.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00007911.bak"))
+                    File.Copy(folder + "00007911.bak", folder + "00007911.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00018601.bak"))
-                File.Copy(folder + "00018601.bak", folder + "00018601.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00018601.bak"))
+                    File.Copy(folder + "00018601.bak", folder + "00018601.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00023439.bak"))
-                File.Copy(folder + "00023439.bak", folder + "00023439.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00023439.bak"))
+                    File.Copy(folder + "00023439.bak", folder + "00023439.upk", true);
+            }
+            catch { }
 
-            if (File.Exists(folder + "00034408.bak"))
-                File.Copy(folder + "00034408.bak", folder + "00034408.upk", true);
+            try
+            {
+                if (File.Exists(folder + "00034408.bak"))
+                    File.Copy(folder + "00034408.bak", folder + "00034408.upk", true);
+            }
+            catch { }
 
             progressbar.Value = progressbar.Maximum;
         }
