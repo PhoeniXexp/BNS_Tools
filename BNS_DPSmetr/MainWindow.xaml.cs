@@ -31,6 +31,10 @@ namespace BNS_DPSmetr
     {
         public static MainWindow currentMainWindow;
 
+        private double h = 115;
+        private int ar = 6;
+        private int dar = 1;
+
         public MainWindow()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
@@ -58,6 +62,8 @@ namespace BNS_DPSmetr
             currentMainWindow = this;
 
             InitializeComponent();
+
+            body.Height -= h;
 
             textBlock.Visibility = Visibility.Hidden;
 
@@ -92,11 +98,16 @@ namespace BNS_DPSmetr
                     textBlock.Text = "Закройте игру";
                     textBlock.Visibility = Visibility.Visible;
                 }
+
+                texture_off.IsEnabled = false;
+                texture_on.IsEnabled = false;
             }
 
             if (!_is)
             {
                 button.IsEnabled = true;
+                texture_off.IsEnabled = true;
+                texture_on.IsEnabled = true;
                 textBlock.Visibility = Visibility.Hidden;
             }
         }
@@ -568,6 +579,16 @@ namespace BNS_DPSmetr
             catch { }
 
             progressbar.Value = progressbar.Maximum;
+        }
+        
+        private void button_body_Click(object sender, RoutedEventArgs e)
+        {
+            ar = ar - dar;
+            button_body.Content = ar;
+            dar = -dar;
+
+            body.Height += h;
+            h = -h;
         }
     }
 }
