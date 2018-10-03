@@ -84,6 +84,7 @@ namespace BNS_DPSmetr
         private void client_search()
         {
             bool _is = false;
+            bool _is2 = false;
 
             string path = game_path.Replace(@"/", @"\") + @"\bin\Frost\bns_platform_x";
             bool frost64 = File.Exists(path + "64");
@@ -99,16 +100,20 @@ namespace BNS_DPSmetr
                     textBlock.Visibility = Visibility.Visible;
                 }
 
+                _is2 = true;
                 texture_off.IsEnabled = false;
                 texture_on.IsEnabled = false;
             }
 
             if (!_is)
             {
-                button.IsEnabled = true;
-                texture_off.IsEnabled = true;
-                texture_on.IsEnabled = true;
+                button.IsEnabled = true;                
                 textBlock.Visibility = Visibility.Hidden;
+                if (!_is2)
+                {
+                    texture_off.IsEnabled = true;
+                    texture_on.IsEnabled = true;
+                }
             }
         }
 
