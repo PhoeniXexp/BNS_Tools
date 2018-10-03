@@ -38,7 +38,7 @@ namespace BNS_DPSmetr
         public MainWindow()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (s, args) =>
-            {                
+            {
                 Assembly assembly = Assembly.GetExecutingAssembly();
                 List<string> embeddedResources = new List<string>(assembly.GetManifestResourceNames());
                 string assemblyName = new AssemblyName(args.Name).Name;
@@ -80,13 +80,13 @@ namespace BNS_DPSmetr
             st.IsBackground = true;
             st.Start();
         }
-                
+
         private void client_search()
         {
             bool _is = false;
 
             string path = game_path.Replace(@"/", @"\") + @"\bin\Frost\bns_platform_x";
-            bool frost64 = File.Exists(path + "64"); 
+            bool frost64 = File.Exists(path + "64");
 
             Process[] procs = Process.GetProcessesByName("client");
             foreach (Process pr in procs)
@@ -117,7 +117,7 @@ namespace BNS_DPSmetr
             DateTime dt = new DateTime();
             while (true)
             {
-                Dispatcher.Invoke(() => { client_search(); });
+                Dispatcher.Invoke(() => { client_search(); texture_check(); });
 
                 dt = DateTime.Now;
                 while ((DateTime.Now - dt).TotalMilliseconds < 666)
@@ -127,6 +127,89 @@ namespace BNS_DPSmetr
 
                 if (patching) break;
             }
+        }
+
+        private void texture_check()
+        {
+            string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
+
+            if (File.Exists(folder + "00007917.bak"))
+            {
+                chbox_kot.IsChecked = true;
+                chbox_kot.IsEnabled = false;
+            }
+            else chbox_kot.IsEnabled = true;
+
+            if (File.Exists(folder + "00007916.bak"))
+            {
+                chbox_sin.IsChecked = true;
+                chbox_sin.IsEnabled = false;
+            }
+            else chbox_sin.IsEnabled = true;
+
+            if (File.Exists(folder + "00007915.bak"))
+            {
+                chbox_gun.IsChecked = true;
+                chbox_gun.IsEnabled = false;
+            }
+            else chbox_gun.IsEnabled = true;
+
+            if (File.Exists(folder + "00007914.bak"))
+            {
+                chbox_des.IsChecked = true;
+                chbox_des.IsEnabled = false;
+            }
+            else chbox_des.IsEnabled = true;
+
+            if (File.Exists(folder + "00007913.bak"))
+            {
+                chbox_fm.IsChecked = true;
+                chbox_fm.IsEnabled = false;
+            }
+            else chbox_fm.IsEnabled = true;
+
+            if (File.Exists(folder + "00007912.bak"))
+            {
+                chbox_kfm.IsChecked = true;
+                chbox_kfm.IsEnabled = false;
+            }
+            else chbox_kfm.IsEnabled = true;
+
+            if (File.Exists(folder + "00007911.bak"))
+            {
+                chbox_bm.IsChecked = true;
+                chbox_bm.IsEnabled = false;
+            }
+            else chbox_bm.IsEnabled = true;
+
+            if (File.Exists(folder + "00018601.bak"))
+            {
+                chbox_lsm.IsChecked = true;
+                chbox_lsm.IsEnabled = false;
+            }
+            else chbox_lsm.IsEnabled = true;
+
+            if (File.Exists(folder + "00023439.bak"))
+            {
+                chbox_wl.IsChecked = true;
+                chbox_wl.IsEnabled = false;
+            }
+            else chbox_wl.IsEnabled = true;
+
+            if (File.Exists(folder + "00034408.bak"))
+            {
+                chbox_sf.IsChecked = true;
+                chbox_sf.IsEnabled = false;
+            }
+            else chbox_sf.IsEnabled = true;
+
+            if (File.Exists(folder + "00056126.bak"))//00056566
+            {
+                chbox_war.IsChecked = true;
+                chbox_war.IsEnabled = false;
+            }
+            else chbox_war.IsEnabled = true;
+
         }
 
         static RegistryKey key_soft = Registry.LocalMachine.OpenSubKey("SOFTWARE");
@@ -168,7 +251,7 @@ namespace BNS_DPSmetr
 
             textBox.Text = game_path.Replace(@"/", @"\");
         }
-        
+
         public void Compiler()
         {
             string bits = "";
@@ -185,7 +268,7 @@ namespace BNS_DPSmetr
 
             Dispatcher.Invoke(() => { textBlock.Text = "OK"; });
         }
-        
+
         public void Extractor()
         {
             string bits = "";
@@ -199,13 +282,13 @@ namespace BNS_DPSmetr
             {
                 BNSDat.BNSDat BnsDat = new BNSDat.BNSDat();
                 BnsDat.Extract(filepath, bit64);
-            }            
+            }
         }
 
         private void DPSturnOn()
         {
             Extractor();
-            
+
             string bits = "";
             if (bit64) bits = "64";
 
@@ -228,7 +311,7 @@ namespace BNS_DPSmetr
 
                 writer.Close();
             }
-            
+
             Compiler();
 
             //_exit();
@@ -244,7 +327,7 @@ namespace BNS_DPSmetr
             string word = "option name=\"showtype-party-6-dungeon-and-cave\" value=\"1\"";
             string replacement = "option name=\"showtype-party-6-dungeon-and-cave\" value=\"2\"";
 
-            string output= input.Replace(word, replacement);
+            string output = input.Replace(word, replacement);
 
             word = "option name=\"showtype-public-zone\" value=\"0\"";
             replacement = "option name=\"showtype-public-zone\" value=\"2\"";
@@ -355,11 +438,11 @@ namespace BNS_DPSmetr
                 button.IsEnabled = false;
                 radio_32b.IsEnabled = false;
                 radio_64b.IsEnabled = false;
-                button_folder.IsEnabled = false;                
+                button_folder.IsEnabled = false;
                 checkbox_xml_plus.IsEnabled = false;
                 Thread t = new Thread(DPSturnOn);
                 t.IsBackground = true;
-                t.Start();                
+                t.Start();
             }
             else
             {
@@ -370,7 +453,7 @@ namespace BNS_DPSmetr
                 radio_64b.IsEnabled = true;
                 button_folder.IsEnabled = true;
                 checkbox_xml_plus.IsEnabled = true;
-            }            
+            }
         }
 
         private void radio_32b_Checked(object sender, RoutedEventArgs e)
@@ -393,7 +476,7 @@ namespace BNS_DPSmetr
 
                 if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
                 {
-                    textBox.Text = fbd.SelectedPath;                    
+                    textBox.Text = fbd.SelectedPath;
                 }
             }
         }
@@ -429,6 +512,7 @@ namespace BNS_DPSmetr
         {
             string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
             progressbar.Value = progressbar.Minimum;
+            textBlock.Visibility = Visibility.Hidden;
 
             if ((bool)chbox_kot.IsChecked)
                 if (File.Exists(folder + "00007917.upk"))
@@ -500,87 +584,157 @@ namespace BNS_DPSmetr
                     File.Delete(folder + "00034408.upk");
                 }
 
+            if ((bool)chbox_war.IsChecked)
+            {
+                if (File.Exists(folder + "00056126.upk"))
+                {
+                    File.Copy(folder + "00056126.upk", folder + "00056126.bak", true);
+                    File.Delete(folder + "00056126.upk");
+                }
+
+                if (File.Exists(folder + "00056566.upk"))
+                {
+                    File.Copy(folder + "00056566.upk", folder + "00056566.bak", true);
+                    File.Delete(folder + "00056566.upk");
+                }
+            }
+
             progressbar.Value = progressbar.Maximum;
+            textBlock.Text = "OK";
+            textBlock.Visibility = Visibility.Visible;
         }
 
         private void texture_on_Click(object sender, RoutedEventArgs e)
         {
             string folder = game_path.Replace(@"/", @"\") + @"\contents\bns\CookedPC\";
             progressbar.Value = progressbar.Minimum;
+            textBlock.Visibility = Visibility.Hidden;
 
             try
             {
                 if (File.Exists(folder + "00007917.bak"))
+                {
                     File.Copy(folder + "00007917.bak", folder + "00007917.upk", true);
+                    File.Delete(folder + "00007917.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007916.bak"))
+                {
                     File.Copy(folder + "00007916.bak", folder + "00007916.upk", true);
+                    File.Delete(folder + "00007916.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007915.bak"))
+                {
                     File.Copy(folder + "00007915.bak", folder + "00007915.upk", true);
+                    File.Delete(folder + "00007915.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007914.bak"))
+                {
                     File.Copy(folder + "00007914.bak", folder + "00007914.upk", true);
+                    File.Delete(folder + "00007914.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007913.bak"))
+                {
                     File.Copy(folder + "00007913.bak", folder + "00007913.upk", true);
+                    File.Delete(folder + "00007913.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007912.bak"))
+                {
                     File.Copy(folder + "00007912.bak", folder + "00007912.upk", true);
+                    File.Delete(folder + "00007912.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00007911.bak"))
+                {
                     File.Copy(folder + "00007911.bak", folder + "00007911.upk", true);
+                    File.Delete(folder + "00007911.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00018601.bak"))
+                {
                     File.Copy(folder + "00018601.bak", folder + "00018601.upk", true);
+                    File.Delete(folder + "00018601.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00023439.bak"))
+                {
                     File.Copy(folder + "00023439.bak", folder + "00023439.upk", true);
+                    File.Delete(folder + "00023439.bak");
+                }
             }
             catch { }
 
             try
             {
                 if (File.Exists(folder + "00034408.bak"))
+                {
                     File.Copy(folder + "00034408.bak", folder + "00034408.upk", true);
+                    File.Delete(folder + "00034408.bak");
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (File.Exists(folder + "00056126.bak"))
+                {
+                    File.Copy(folder + "00056126.bak", folder + "00056126.upk", true);
+                    File.Delete(folder + "00056126.bak");
+                }
+            }
+            catch { }
+
+            try
+            {
+                if (File.Exists(folder + "00056566.bak"))
+                {
+                    File.Copy(folder + "00056566.bak", folder + "00056566.upk", true);
+                    File.Delete(folder + "00056566.bak");
+                }
             }
             catch { }
 
             progressbar.Value = progressbar.Maximum;
+            textBlock.Text = "OK";
+            textBlock.Visibility = Visibility.Visible;
         }
-        
+
         private void button_body_Click(object sender, RoutedEventArgs e)
         {
             ar = ar - dar;
