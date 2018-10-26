@@ -22,7 +22,7 @@ using System.Threading;
 using System.Reflection;
 using System.Diagnostics;
 
-namespace BNS_DPSmetr
+namespace BNS_Tools
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -989,7 +989,7 @@ namespace BNSDat
                 // Report progress                                
                 int whattosend = (100 * i / 2 / FileCount);
 
-                BNS_DPSmetr.MainWindow.currentMainWindow.SortOutputHandler(whattosend);
+                BNS_Tools.MainWindow.currentMainWindow.SortOutputHandler(whattosend);
                 
                 // End report progress
             }
@@ -1099,7 +1099,7 @@ namespace BNSDat
                 // Report progress                
                 int whattosend = (100 * (i + FileCount) / 2 / FileCount);
 
-                BNS_DPSmetr.MainWindow.currentMainWindow.SortOutputHandler(whattosend);
+                BNS_Tools.MainWindow.currentMainWindow.SortOutputHandler(whattosend);
                 // End report progress
             }
 

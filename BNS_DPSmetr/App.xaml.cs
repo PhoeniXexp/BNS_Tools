@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace BNS_DPSmetr
+namespace BNS_Tools
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml
