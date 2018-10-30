@@ -238,13 +238,13 @@ namespace BNS_Tools
         {
             try
             {
-                RegistryKey key = key_soft.OpenSubKey("4game");
+                RegistryKey key = key_soft.OpenSubKey("Innova Co. SARL");
                 if (key == null)
                 {
                     key = key_soft.OpenSubKey("WOW6432Node");
-                    key = key.OpenSubKey("4game");
+                    key = key.OpenSubKey("Innova Co. SARL");
                 }
-                key = key.OpenSubKey("4gameservice");
+                key = key.OpenSubKey("4game2.0");
                 key = key.OpenSubKey("Games");
                 key_game = key.OpenSubKey("Blade and Soul");
                 game_path = key_game.GetValue("path").ToString();
