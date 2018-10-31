@@ -30,6 +30,6 @@
         <Button x:Name="texture_off" Content="Отключить анимацию" HorizontalAlignment="Left" Margin="21,213,0,0" Width="146" Click="texture_off_Click" Height="22" VerticalAlignment="Top"/>
         <Button x:Name="texture_on" Content="Восстановить" HorizontalAlignment="Left" Margin="191,213,0,0" Width="98" Click="texture_on_Click" Height="22" VerticalAlignment="Top"/>
         <Button x:Name="button_body" FontFamily="Marlett" Content="6" HorizontalAlignment="Left" Margin="238,98,0,0" VerticalAlignment="Top" Width="40" Click="button_body_Click"/>
-        <Button x:Name="button_close" Content="Закрыть игру" HorizontalAlignment="Left" Height="24" Margin="10,92,0,0" VerticalAlignment="Top" Width="157" Visibility="Hidden"/>
+        <Button x:Name="button_close" Content="Закрыть игру" HorizontalAlignment="Left" Height="24" Margin="10,92,0,0" VerticalAlignment="Top" Width="157" Visibility="Hidden" Click="button_close_Click"/>
     </Grid>
 </Window>

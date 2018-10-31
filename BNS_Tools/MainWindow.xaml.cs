@@ -92,15 +92,15 @@ namespace BNS_Tools
             Process[] procs = Process.GetProcessesByName("client");
             foreach (Process pr in procs)
             {
-                if (bit64 == frost64)
-                {
-                    _is = true;
-                    button.IsEnabled = false;
-                    textBlock.Text = "Закройте игру";
-                    textBlock.Visibility = Visibility.Visible;
-                }
+                _is = true;
+                button.IsEnabled = false;
+                textBlock.Text = "Закройте игру";
+                textBlock.Visibility = Visibility.Visible;
 
-                _is2 = true;
+                radio_32b.Visibility = Visibility.Hidden;
+                radio_64b.Visibility = Visibility.Hidden;
+                button_close.Visibility = Visibility.Visible;
+
                 texture_off.IsEnabled = false;
                 texture_on.IsEnabled = false;
             }
@@ -748,6 +748,16 @@ namespace BNS_Tools
 
             body.Height += h;
             h = -h;
+        }
+
+        private void button_close_Click(object sender, RoutedEventArgs e)
+        {
+            Process[] _procs = Process.GetProcessesByName("client");
+
+            foreach (Process pr in _procs)
+            {
+                Process.GetProcessById(pr.Id).Kill();
+            }
         }
     }
 }
