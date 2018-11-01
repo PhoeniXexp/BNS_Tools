@@ -84,7 +84,6 @@ namespace BNS_Tools
         private void client_search()
         {
             bool _is = false;
-            bool _is2 = false;
 
             string path = game_path.Replace(@"/", @"\") + @"\bin\Frost\bns_platform_x";
             bool frost64 = File.Exists(path + "64");
@@ -107,28 +106,25 @@ namespace BNS_Tools
 
             if (!_is)
             {
-                button.IsEnabled = true;                
+                button.IsEnabled = true;
                 textBlock.Visibility = Visibility.Hidden;
-                if (!_is2)
-                {
-                    texture_off.IsEnabled = true;
-                    texture_on.IsEnabled = true;
-                }
+
+                radio_32b.Visibility = Visibility.Visible;
+                radio_64b.Visibility = Visibility.Visible;
+                button_close.Visibility = Visibility.Hidden;
+
+                texture_off.IsEnabled = true;
+                texture_on.IsEnabled = true;
             }
         }
 
         private void timer()
         {
-            DateTime dt = new DateTime();
             while (true)
             {
                 Dispatcher.Invoke(() => { client_search(); texture_check(); });
 
-                dt = DateTime.Now;
-                while ((DateTime.Now - dt).TotalMilliseconds < 666)
-                {
-                    Thread.Sleep(250);
-                }
+                Thread.Sleep(666);
 
                 if (patching) break;
             }
