@@ -79,5 +79,15 @@ namespace BNS_Tools.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] updater {
+            get {
+                object obj = ResourceManager.GetObject("updater", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

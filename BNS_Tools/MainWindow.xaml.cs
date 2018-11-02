@@ -63,6 +63,11 @@ namespace BNS_Tools
 
             InitializeComponent();
 
+            string path = Environment.CurrentDirectory + @"\updater.exe";
+            if (File.Exists(path)) File.Delete(path);
+            path = Environment.CurrentDirectory + "\\" + Process.GetCurrentProcess().ProcessName + ".upd";
+            if (File.Exists(path)) File.Delete(path);
+
             body.Height -= h;
 
             textBlock.Visibility = Visibility.Hidden;
@@ -754,6 +759,33 @@ namespace BNS_Tools
             {
                 Process.GetProcessById(pr.Id).Kill();
             }
+        }
+
+        private void button_update_Click(object sender, RoutedEventArgs e)
+        {
+            var _bfile = Properties.Resources.updater;
+            string path = Environment.CurrentDirectory + @"\updater.exe";
+            try
+            {
+                using (FileStream fs = File.Create(path)) { fs.Write(_bfile, 0, _bfile.Length); }
+            }
+            catch { return; }
+
+            string name = Process.GetCurrentProcess().ProcessName;
+            string origname = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+
+            Process p = new Process();
+            try
+            {
+                p.StartInfo.FileName = path;
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.Arguments = " " + name + " " + origname + " " + ver;
+                p.Start();
+            }
+            catch { }
+
         }
     }
 }
