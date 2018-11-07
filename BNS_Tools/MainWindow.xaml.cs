@@ -61,12 +61,18 @@ namespace BNS_Tools
 
             currentMainWindow = this;
 
+            System.Net.WebRequest.DefaultWebProxy.Credentials = System.Net.CredentialCache.DefaultNetworkCredentials;
+
             InitializeComponent();
 
-            string path = Environment.CurrentDirectory + @"\updater.exe";
-            if (File.Exists(path)) File.Delete(path);
-            path = Environment.CurrentDirectory + "\\" + Process.GetCurrentProcess().ProcessName + ".upd";
-            if (File.Exists(path)) File.Delete(path);
+            try
+            {
+                string path = Environment.CurrentDirectory + @"\updater.exe";
+                if (File.Exists(path)) File.Delete(path);
+                path = Environment.CurrentDirectory + "\\" + Process.GetCurrentProcess().ProcessName + ".upd";
+                if (File.Exists(path)) File.Delete(path);
+            }
+            catch { }
 
             body.Height -= h;
 
