@@ -83,6 +83,7 @@
         <Button x:Name="btn_unpack" Content="Распаковать" HorizontalAlignment="Left" Margin="21,264,0,0" VerticalAlignment="Top" Width="84" Click="Btn_unpack_Click"/>
         <Button x:Name="btn_pack" Content="Запаковать" HorizontalAlignment="Left" Margin="126,264,0,0" VerticalAlignment="Top" Width="84" Click="Btn_pack_Click"/>
         <CheckBox x:Name="checkbox_sin_antiblock" Content="Sin" HorizontalAlignment="Left" Height="15" Margin="21,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Ломание блока с F на ПКМ"/>
-        <CheckBox x:Name="checkbox_kot_exit" Content="Kot" HorizontalAlignment="Left" Height="15" Margin="72,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Выход с Z на 2"/>
+        <CheckBox x:Name="checkbox_sin_tabinvise" Content="Sin" HorizontalAlignment="Left" Height="15" Margin="71,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Таб на инвиз нет без яда"/>
+        <CheckBox x:Name="checkbox_kot_exit" Content="Kot" HorizontalAlignment="Left" Height="15" Margin="121,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Выход с Z на 2"/>
     </Grid>
 </Window>

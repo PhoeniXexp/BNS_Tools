@@ -345,6 +345,26 @@ namespace BNS_Tools
                 }
             }
 
+            Dispatcher.Invoke(() => { b = (bool)checkbox_sin_tabinvise.IsChecked; });
+            if (b)
+            {
+                var pathskills = directory + "skill3_contextscriptdata_assassin_contextsimplemode.xml";
+
+                reader = new StreamReader(pathskills);
+                input = reader.ReadToEnd();
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(pathskills))
+                {
+                    var s1 = "<condition field=\"job-style-only\" job-style=\"base-2\" />";
+                    var s2 = "<condition skill=\"141430\" />";
+                    var index = input.IndexOf(s2, input.IndexOf(s2) + 1);
+                    string output = string.Concat(input.Substring(0, index - 1), s1, input.Substring(index));
+                    
+                    writer.Write(output);
+                }
+            }
+
             Dispatcher.Invoke(() => { b = (bool)checkbox_kot_exit.IsChecked; });
             if (b)
             {
