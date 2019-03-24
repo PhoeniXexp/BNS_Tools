@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:BNS_Tools"
         xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Name="body" x:Class="BNS_Tools.MainWindow"
         mc:Ignorable="d"
-       Title="BNS-Tools by PhoeniX" Height="286.879" Width="315" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+       Title="BNS-Tools by PhoeniX" Height="365" Width="320" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -55,14 +55,14 @@
     </Window.Resources>
     <Grid>
         <TextBox x:Name="textBox" Margin="10,10,0,0" TextWrapping="Wrap" Text="Game address" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top"/>
-        <Button x:Name="button_folder" Content="..." Margin="275,10,0,0" HorizontalAlignment="Left" Width="20" Height="25" VerticalAlignment="Top" Click="button_folder_Click"/>
+        <Button x:Name="button_folder" Content="..." Margin="275,10,0,0" Height="25" VerticalAlignment="Top" Click="button_folder_Click" HorizontalAlignment="Left" Width="20"/>
         <Button x:Name="button" Content="Включить DPS" Margin="10,45,0,0" HorizontalAlignment="Left" Width="95" Height="25" VerticalAlignment="Top" Click="button_Click"/>
-        <ProgressBar x:Name="progressbar" Margin="115,52.5,0,0" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
+        <ProgressBar x:Name="progressbar" Margin="115,52,0,0" Height="10" VerticalAlignment="Top" HorizontalAlignment="Left" Width="180"/>
         <TextBlock x:Name="textBlock" Height="20" Margin="155,62,0,0" TextWrapping="Wrap" Text="Sample text ..." VerticalAlignment="Top" HorizontalAlignment="Left" Width="85" Foreground="#FF004000" FontWeight="Bold" TextAlignment="Center"/>
         <RadioButton x:Name="radio_32b" Content="32Bit Client" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Checked="radio_32b_Checked"/>
         <RadioButton x:Name="radio_64b" Content="64Bit Client" HorizontalAlignment="Left" Margin="110,100,0,0" VerticalAlignment="Top" Checked="radio_64b_Checked"/>
         <CheckBox x:Name="checkbox_xml_plus" Content="Cheats" HorizontalAlignment="Left" Margin="210,100,0,0" VerticalAlignment="Top" Checked="checkbox_xml_plus_Checked" Unchecked="checkbox_xml_plus_Unchecked" IsEnabled="False" Visibility="Hidden"/>
-        <GroupBox Header="" HorizontalAlignment="Left" Margin="10,116,0,0" Width="289" Height="126" VerticalAlignment="Top"/>
+        <GroupBox Header="" Margin="10,116,0,0" Height="126" VerticalAlignment="Top" HorizontalAlignment="Left" Width="289"/>
         <CheckBox x:Name="chbox_fm" Content="FM" HorizontalAlignment="Left" Margin="30,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="chbox_wl" Content="WL" HorizontalAlignment="Left" Margin="30,162,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <CheckBox x:Name="chbox_sf" Content="SF" HorizontalAlignment="Left" Margin="86,142,0,0" VerticalAlignment="Top" IsChecked="True"/>
@@ -76,8 +76,13 @@
         <CheckBox x:Name="chbox_war" Content="WAR" HorizontalAlignment="Left" Margin="30,183,0,0" VerticalAlignment="Top" IsChecked="True"/>
         <Button x:Name="texture_off" Content="Отключить анимацию" HorizontalAlignment="Left" Margin="21,213,0,0" Width="146" Click="texture_off_Click" Height="22" VerticalAlignment="Top"/>
         <Button x:Name="texture_on" Content="Восстановить" HorizontalAlignment="Left" Margin="191,213,0,0" Width="98" Click="texture_on_Click" Height="22" VerticalAlignment="Top"/>
-        <Button x:Name="button_body" FontFamily="Marlett" Content="6" HorizontalAlignment="Left" Margin="238,98,0,0" VerticalAlignment="Top" Width="40" Click="button_body_Click"/>
-        <Button x:Name="button_update" FontFamily="Marlett" Content="h" HorizontalAlignment="Left" Margin="283,100,0,0" VerticalAlignment="Top" Width="12" Click="button_update_Click" ToolTip="Проверить обновление" Height="12" Style="{DynamicResource ButtonStyleUpdate}"/>
+        <Button x:Name="button_body" FontFamily="Marlett" Content="6" Margin="238,98,0,0" VerticalAlignment="Top" Click="button_body_Click" HorizontalAlignment="Left" Width="40"/>
+        <Button x:Name="button_update" FontFamily="Marlett" Content="h" Margin="283,100,0,0" VerticalAlignment="Top" Click="button_update_Click" ToolTip="Проверить обновление" Height="12" Style="{DynamicResource ButtonStyleUpdate}" HorizontalAlignment="Left" Width="12"/>
         <Button x:Name="button_close" Content="Закрыть игру" HorizontalAlignment="Left" Height="24" Margin="10,92,0,0" VerticalAlignment="Top" Width="157" Visibility="Hidden" Click="button_close_Click"/>
+        <GroupBox Header="" Height="74" Margin="10,247,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="289"/>
+        <Button x:Name="btn_unpack" Content="Распаковать" HorizontalAlignment="Left" Margin="21,264,0,0" VerticalAlignment="Top" Width="84" Click="Btn_unpack_Click"/>
+        <Button x:Name="btn_pack" Content="Запаковать" HorizontalAlignment="Left" Margin="126,264,0,0" VerticalAlignment="Top" Width="84" Click="Btn_pack_Click"/>
+        <CheckBox x:Name="checkbox_sin_antiblock" Content="Sin" HorizontalAlignment="Left" Height="15" Margin="21,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Ломание блока с F на ПКМ"/>
+        <CheckBox x:Name="checkbox_kot_exit" Content="Kot" HorizontalAlignment="Left" Height="15" Margin="72,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Выход с Z на 2"/>
     </Grid>
 </Window>

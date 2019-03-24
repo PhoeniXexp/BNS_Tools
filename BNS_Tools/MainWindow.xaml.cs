@@ -31,7 +31,7 @@ namespace BNS_Tools
     {
         public static MainWindow currentMainWindow;
 
-        private double h = 115;
+        private double h = 365 - 155;
         private int ar = 6;
         private int dar = 1;
 
@@ -304,13 +304,15 @@ namespace BNS_Tools
             string bits = "";
             if (bit64) bits = "64";
 
-            string directory = folder_path + "xml" + bits + @".dat.files\client.config2.xml";
+            string directory = folder_path + "xml" + bits + @".dat.files\";
 
-            StreamReader reader = new StreamReader(directory);
+            var pathdps = directory + "client.config2.xml";
+
+            StreamReader reader = new StreamReader(pathdps);
             string input = reader.ReadToEnd();
             reader.Close();
 
-            using (StreamWriter writer = new StreamWriter(directory))
+            using (StreamWriter writer = new StreamWriter(pathdps))
             {
                 string output = edit_xml(input);
 
@@ -320,8 +322,46 @@ namespace BNS_Tools
                 }
 
                 writer.Write(output);
+            }
 
-                writer.Close();
+            bool b = false;
+
+            Dispatcher.Invoke(() => { b = (bool)checkbox_sin_antiblock.IsChecked; });
+            if (b)
+            {
+                var pathskills = directory + "skill3_contextscriptdata_assassin_contextsimplemode.xml";
+
+                reader = new StreamReader(pathskills);
+                input = reader.ReadToEnd();
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(pathskills))
+                {
+                    var s1 = "<result context-3=\"141400\" control-mode=\"bns\" stance-ui-effect=\"key-change\" />";
+                    var s2 = "<result context-2=\"141400\" control-mode=\"bns\" stance-ui-effect=\"key-change\" />";
+                    string output = input.Replace(s1, s2);
+
+                    writer.Write(output);
+                }
+            }
+
+            Dispatcher.Invoke(() => { b = (bool)checkbox_kot_exit.IsChecked; });
+            if (b)
+            {
+                var pathskills = directory + "skill3_contextscriptdata_summoner_contextsimplemode.xml";
+
+                reader = new StreamReader(pathskills);
+                input = reader.ReadToEnd();
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(pathskills))
+                {
+                    var s1 = "<result control-mode=\"bns\" skillbar-5=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    var s2 = "<result control-mode=\"bns\" skillbar-2=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    string output = input.Replace(s1, s2);
+
+                    writer.Write(output);
+                }
             }
 
             Compiler();
@@ -331,6 +371,8 @@ namespace BNS_Tools
             {
                 texture_on.IsEnabled = true;
                 texture_off.IsEnabled = true;
+                btn_pack.IsEnabled = true;
+                btn_unpack.IsEnabled = true;
             });
         }
 
@@ -448,6 +490,8 @@ namespace BNS_Tools
                 textBlock.Text = "Extracting...";
                 textBlock.Visibility = Visibility.Visible;
                 button.IsEnabled = false;
+                btn_pack.IsEnabled = false;
+                btn_unpack.IsEnabled = false;
                 radio_32b.IsEnabled = false;
                 radio_64b.IsEnabled = false;
                 button_folder.IsEnabled = false;
@@ -792,6 +836,36 @@ namespace BNS_Tools
             }
             catch { }
 
+        }
+
+        private void Btn_unpack_Click(object sender, RoutedEventArgs e)
+        {
+            if (verifyFolder())
+            {
+                patching = true;
+
+                game_path = textBox.Text;
+                textBlock.Text = "Extracting...";
+                textBlock.Visibility = Visibility.Visible;
+                Thread t = new Thread(Extractor);
+                t.IsBackground = true;
+                t.Start();
+            }
+        }
+
+        private void Btn_pack_Click(object sender, RoutedEventArgs e)
+        {
+            if (verifyFolder())
+            {
+                patching = true;
+
+                game_path = textBox.Text;
+                textBlock.Text = "Extracting...";
+                textBlock.Visibility = Visibility.Visible;
+                Thread t = new Thread(Compiler);
+                t.IsBackground = true;
+                t.Start();
+            }
         }
     }
 }
