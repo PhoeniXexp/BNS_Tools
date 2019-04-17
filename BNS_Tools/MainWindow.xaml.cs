@@ -1,26 +1,16 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Xml;
-using System.Windows.Forms;
 using System.Threading;
-using System.Reflection;
-using System.Diagnostics;
+using System.Windows;
+using System.Windows.Forms;
+using System.Xml;
 
 namespace BNS_Tools
 {
@@ -232,8 +222,6 @@ namespace BNS_Tools
         private bool bit64 = false;
         private bool xml_plus = false;
 
-        private CultureInfo originalCulture;
-
         private bool verifyFolder()
         {
             folder_path = game_path.Replace(@"/", @"\") + @"\contents\Local\INNOVA\data\";
@@ -360,7 +348,7 @@ namespace BNS_Tools
                     var s2 = "<condition skill=\"141430\" />";
                     var index = input.IndexOf(s2, input.IndexOf(s2) + 1);
                     string output = string.Concat(input.Substring(0, index - 1), s1, input.Substring(index));
-                    
+
                     writer.Write(output);
                 }
             }
@@ -368,7 +356,7 @@ namespace BNS_Tools
             Dispatcher.Invoke(() => { b = (bool)checkbox_kot_exit.IsChecked; });
             if (b)
             {
-                var pathskills = directory + "skill3_contextscriptdata_summoner_contextsimplemode.xml";
+                var pathskills = directory + "skill3_contextscriptdata_summoner.xml";
 
                 reader = new StreamReader(pathskills);
                 input = reader.ReadToEnd();
@@ -379,6 +367,59 @@ namespace BNS_Tools
                     var s1 = "<result control-mode=\"bns\" skillbar-5=\"151016\" skillbar-ui-effect=\"key-change\" />";
                     var s2 = "<result control-mode=\"bns\" skillbar-2=\"151016\" skillbar-ui-effect=\"key-change\" />";
                     string output = input.Replace(s1, s2);
+
+                    s1 = "<result control-mode=\"bns\" skillbar-1=\"501\" skillbar-2=\"501\" skillbar-3=\"501\" skillbar-4=\"501\" skillbar-5=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    s2 = "<result control-mode=\"bns\" skillbar-1=\"501\" skillbar-5=\"501\" skillbar-3=\"501\" skillbar-4=\"501\" skillbar-2=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    output = input.Replace(s1, s2);
+
+                    s1 = "<result control-mode=\"bns\" skillbar-1=\"151015\" skillbar-5=\"501\" skillbar-3=\"501\" skillbar-4=\"501\" skillbar-2=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    s2 = "<result control-mode=\"bns\" skillbar-1=\"151015\" skillbar-5=\"501\" skillbar-3=\"501\" skillbar-4=\"501\" skillbar-2=\"151016\" skillbar-ui-effect=\"key-change\" />";
+                    output = input.Replace(s1, s2);
+
+                    writer.Write(output);
+                }
+            }
+
+            Dispatcher.Invoke(() => { b = (bool)checkbox_kot_kashtan.IsChecked; });
+            if (b)
+            {
+                var pathskills = directory + "skill3_contextscriptdata_summoner.xml";
+
+                reader = new StreamReader(pathskills);
+                input = reader.ReadToEnd();
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(pathskills))
+                {
+                    var s1 = "<result context-3=\"152028\" context-ui-effect=\"event\" control-mode=\"bns\" />";
+                    var s2 = "<result context-2=\"152028\" context-ui-effect=\"event\" control-mode=\"bns\" />";
+                    string output = input.Replace(s1, s2);
+
+                    writer.Write(output);
+                }
+            }
+
+            Dispatcher.Invoke(() => { b = (bool)checkbox_sf_v.IsChecked; });
+            if (b)
+            {
+                var pathskills = directory + "skill3_contextscriptdata_soulfighter_contextsimplemode.xml";
+
+                reader = new StreamReader(pathskills);
+                input = reader.ReadToEnd();
+                reader.Close();
+
+                using (StreamWriter writer = new StreamWriter(pathskills))
+                {
+                    var s1 = "<result context-3=\"182401\" context-ui-effect=\"event\" control-mode=\"bns\" />";
+                    var s2 = "<result context-2=\"182401\" context-ui-effect=\"event\" control-mode=\"bns\" />";
+                    string output = input.Replace(s1, s2);
+
+                    s1 = "<result context-3=\"182400\" context-ui-effect=\"event\" control-mode=\"bns\" />";
+                    s2 = "<result context-2=\"182400\" context-ui-effect=\"event\" control-mode=\"bns\" />\r\n</decision>\r\n</layer>" +
+                        "\r\n<layer>\r\n<decision>\r\n<condition skill=\"182120\" />" +
+                        "\r\n<result control-mode=\"bns\" context-2=\"182120\" skillbar-ui-effect=\"event\" />";
+
+                    output = input.Replace(s1, s2);
 
                     writer.Write(output);
                 }
@@ -833,28 +874,19 @@ namespace BNS_Tools
 
         private void button_update_Click(object sender, RoutedEventArgs e)
         {
-            var _bfile = Properties.Resources.updater;
-            string path = Environment.CurrentDirectory + @"\updater.exe";
-            try
+            Updater.Updater updater = new Updater.Updater();
+            if (updater.CheckUpdate())
             {
-                using (FileStream fs = File.Create(path)) { fs.Write(_bfile, 0, _bfile.Length); }
+                System.Windows.MessageBox.Show("Есть обновление. Сейчас будет установлено.");
+                if (updater.Download())
+                    updater.Update();
+                else
+                    System.Windows.MessageBox.Show("Не удалось скачать");
             }
-            catch { return; }
-
-            string name = Process.GetCurrentProcess().ProcessName;
-            string origname = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
-            string ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-
-            Process p = new Process();
-            try
+            else
             {
-                p.StartInfo.FileName = path;
-                p.StartInfo.CreateNoWindow = true;
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.Arguments = " " + name + " " + origname + " " + ver;
-                p.Start();
+                System.Windows.MessageBox.Show("Обновлений нет.");
             }
-            catch { }
 
         }
 
@@ -1128,7 +1160,7 @@ namespace BNSDat
                 int whattosend = (100 * i / 2 / FileCount);
 
                 BNS_Tools.MainWindow.currentMainWindow.SortOutputHandler(whattosend);
-                
+
                 // End report progress
             }
 

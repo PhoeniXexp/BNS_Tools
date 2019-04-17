@@ -85,5 +85,7 @@
         <CheckBox x:Name="checkbox_sin_antiblock" Content="Sin" HorizontalAlignment="Left" Height="15" Margin="21,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Ломание блока с F на ПКМ"/>
         <CheckBox x:Name="checkbox_sin_tabinvise" Content="Sin" HorizontalAlignment="Left" Height="15" Margin="71,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Таб на инвиз нет без яда"/>
         <CheckBox x:Name="checkbox_kot_exit" Content="Kot" HorizontalAlignment="Left" Height="15" Margin="121,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Выход с Z на 2"/>
+        <CheckBox x:Name="checkbox_kot_kashtan" Content="Kot" HorizontalAlignment="Left" Height="15" Margin="167,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="Большой каштан с F на ПКМ"/>
+        <CheckBox x:Name="checkbox_sf_v" Content="SF" HorizontalAlignment="Left" Height="15" Margin="217,294,0,0" VerticalAlignment="Top" Width="46" ToolTip="F и V на ПКМ"/>
     </Grid>
 </Window>
